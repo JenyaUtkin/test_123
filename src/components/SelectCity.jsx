@@ -1,29 +1,23 @@
 import React from 'react'  
 import {InputLabel, Grid, FormControl, Select, MenuItem, Box} from '@mui/material';
-import { useSelector } from 'react-redux';
-import { getAllWeather } from '../Redux/WeatherSlice/weatherSlice';
+import { useDispatch } from 'react-redux';
+import { fetchAsyncWeather } from '../Redux/WeatherSlice/weatherSlice';
 
 const cities = [
   'Moscow',
   'Volgograd',
-  'Lipeck',
-  'Novosibirsk',
-  'Ryazan',
+  'Minsk',
+  'Sochi',
+  'Kazan',
 ]
 
 
 export default function SelectCity() {
-  const [city, setCity] = React.useState('');
-
+  const dispatch = useDispatch()
   const selectHandler = (e) => {
-    setCity(e.target.value)
+    dispatch(fetchAsyncWeather(e.target.value))
   }
-  const weather = useSelector(getAllWeather)
-  console.log("SelectCity -> weather", weather)
-  // React.useEffect(()=>{
 
-  // },[])
-//console.log('vity', city)
   return (
     <Grid
   container
@@ -37,7 +31,6 @@ export default function SelectCity() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={city}
           label="City"
           onChange={selectHandler}
         >

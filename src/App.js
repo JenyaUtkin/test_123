@@ -1,18 +1,24 @@
 import React from 'react'
-import Box from '@mui/material/Box';
-import Weather from './components/Weather'
+import WeatherCard from './components/WeatherCard'
 import Time from './components/Time'
 import SelectCity from './components/SelectCity';
-
+import { Paper } from '@mui/material';
+import Container from '@mui/material/Container';
+import './style.css'
 export default function App() {
+  
   return (
-    <>
-    <Box  sx={{ bgcolor: '#cfe8fc', height: '100vh' }}>
+
+    <Paper className="paper">
+      <Container fixed>
+      <br/>
       <SelectCity/>
+      <br/>
       <Time/>
-      <Weather/>
-    </Box>
-    </>
+      <br/>
+      <WeatherCard/>
+      </Container>
+    </Paper>
     
   )
 }
